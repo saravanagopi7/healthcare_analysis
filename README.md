@@ -1,17 +1,20 @@
 Healthcare Data Analysis and Streamlit Application
 
-Project Overview
+Project Overview:
+
 This project focuses on the analysis and visualization of healthcare-related data. It involves various data cleaning and preprocessing stages, utilizing MySQL for data storage, Python for data manipulation and analysis, and Streamlit for creating an interactive web application.
 
-Technologies Used
+Technologies Used:
+
 Python: For data cleaning, preprocessing, and analysis using libraries like Pandas, NumPy, and Matplotlib.
 MySQL: Used to store cleaned data in structured tables.
 Streamlit: For creating an interactive and user-friendly web application to display insights and visualizations.
 Pandas: Data manipulation and cleaning.
-Matplotlib: Data visualization.
+Matplotlib & plotly.express: Data visualization.
 
 
-Project Workflow
+Project Workflow:
+
 Data Cleaning:
 
 The initial healthcare dataset was imported and cleaned using Python libraries.
@@ -19,7 +22,11 @@ Missing values were handled with string value of 'NNot Scheduled, and column nam
 
 MySQL Integration:
 
-Cleaned and processed data was stored in a MySQL database for efficient querying and management.
+Cleaned and processed data was stored in a MySQL database.
+
+MySQL and Python connection:
+
+Connecting Python and MySQL using "pymysql" for efficient querying
 SQL queries were written to retrieve relevant data for analysis and visualization.
 
 Data Analysis:
