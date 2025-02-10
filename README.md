@@ -26,7 +26,7 @@ Cleaned and processed data was stored in a MySQL database.
 
 MySQL and Python connection:
 
-Connecting Python and MySQL using "pymysql" for efficient querying
+Connecting Python and MySQL using "pymysql" for efficient querying,
 SQL queries were written to retrieve relevant data for analysis and visualization.
 
 Data Analysis:
