@@ -80,6 +80,7 @@ if sb=='Dashboard': #To display the Dashboard in streamlit
     )
     st.plotly_chart(fig)
     st.markdown("""The line chart shows how the total number of patient admissions has changed over time.""")
+    st.table(df1)
     
 if sb=='Analysis & Insights':
     options = ["Top 5 common diagnoses","Bed Occupancy Analysis","Length of Stay Distribution",
@@ -169,8 +170,8 @@ if sb=='Analysis & Insights':
         st.table(df4)
         st.markdown("""
                     #### Key Observation:
-                     - The average length of stay is 8 days,This is plot will help for planning the bed occupany for well ahead for the new admits.
-                     - Address the Prolonged Stays,For patients with a longer length of stay, investigate whether
+                     - The average length of stay is 8 days,This is plot will help for planning the bed occupancy for well ahead for the new admits.
+                     - Address the Prolonged stays,for patients with a longer length of stay, investigate whether
                      these stays are medically necessary or due to delays in discharge planning.
                 """)
 
