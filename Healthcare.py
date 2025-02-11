@@ -103,10 +103,9 @@ if sb=='Analysis & Insights':
         limit 5;
         """
         df2= pd.read_sql(query2,mydb)
-        
+        #Bar chart
         plt.figure(figsize =(5,3))
         plt.bar(df2['Diagnosis'],df2['TotalCases'],color='orange',width =0.7)
-        #plt.title('The top 5 most common diagnoses')
         plt.xlabel('Diagnosis')
         plt.ylabel('No. of Cases')
         plt.show()
@@ -130,7 +129,7 @@ if sb=='Analysis & Insights':
             order by TotalOccupancy,Bed_Occupancy desc"""
         
             df3= pd.read_sql(query3,mydb)
-            
+            #pie chart
             lbls = df3['Bed_Occupancy']
             sizes = df3['TotalOccupancy']
             
@@ -157,13 +156,13 @@ if sb=='Analysis & Insights':
             max(DATEDIFF(Discharge_Date,Admit_Date)) AS Maximum_Length_of_Stay
             from healthcare_df"""
         df4= pd.read_sql(query4,mydb)
+        #Hbar chart
         stay = ['Average Length of Stay', 'Maximum Length of Stay']
         values = [df4['Average_Length_of_Stay'].iloc[0], df4['Maximum_Length_of_Stay'].iloc[0]]
 
         plt.figure(figsize=(8, 4))
         plt.barh(stay,values, color=['skyblue', 'orange'])
         plt.xlabel('Days')
-        #plt.title('Length of Stay Distribution')
         plt.grid(axis='x', linestyle='--', alpha=0.7)
         plt.tight_layout()
         plt.show()
@@ -199,7 +198,7 @@ if sb=='Analysis & Insights':
         bar_width = 0.2
         x = np.arange(len(years))  # X positions for the years
         
-        # clustered bar chart
+        # clustered or grouped bar chart
         plt.figure(figsize=(10, 6))
         for i, season in enumerate(seasons): # Loops through each season
             plt.bar(x + i * bar_width, pivot_df[season], bar_width, label=season)
@@ -232,7 +231,7 @@ if sb=='Analysis & Insights':
             order by Year asc
             """
         df6= pd.read_sql(query6,mydb)
-        
+        #bar chart
         plt.figure(figsize =(6,3))
         plt.bar(df6['Year'],df6['ICU_Admits'],color='darkblue',width =0.5)
         plt.xlabel('Year')
@@ -260,7 +259,7 @@ if sb=='Analysis & Insights':
             order by TotalCasesHandled desc
             """
         df7= pd.read_sql(query7,mydb)
-        
+        #pie chart
         lbls = df7['Doctor']
         sizes = df7['TotalCasesHandled']
         plt.pie(sizes,labels =lbls,
@@ -284,7 +283,7 @@ if sb=='Analysis & Insights':
                     order by Total_No_Tests desc"""
             
         df8= pd.read_sql(query8,mydb)
-        
+        #multi line chart
         plt.figure(figsize=(10, 6))
         
         for test in df8['Test'].unique(): # Iterate through each test
@@ -316,7 +315,7 @@ if sb=='Analysis & Insights':
                     limit 3;"""
             
         df9= pd.read_sql(query9,mydb)
-        
+        #bar chart
         plt.figure(figsize =(5,3))
         plt.bar(df9['Top_Rated_Doctors'],df9['Ratings'],color='mediumseagreen',width =0.7)
         plt.xlabel('Doctors')
@@ -349,16 +348,13 @@ if sb=='Analysis & Insights':
         plt.figure(figsize=(10, 6))
 
         pivot_df = df10.pivot(index='Year', columns='Quarterly', values='TotalAmount')
-        
+        #Grouped Bar chart
         fig, ax = plt.subplots(figsize=(10, 6))
         pivot_df.plot(kind='bar', ax=ax)
-        
-        # Add title and labels
+    
         plt.title('Total Billing Amount by Quarter and Year')
         plt.xlabel('Year')
         plt.ylabel('Total Billing Amount')
-        
-        # Show the plot
         plt.xticks(rotation=0)  # Rotate the x-axis labels for better readability
         plt.legend(title='Quarterly')
         plt.tight_layout()
@@ -382,7 +378,7 @@ if sb=='Analysis & Insights':
                     order by BilledAmount desc"""
             
         df11= pd.read_sql(query11,mydb)
-        
+        #bar plot
         plt.figure(figsize =(7,4))
         plt.bar(df11['Diagnosis'],df11['BilledAmount'],color='firebrick',width =0.7)
         plt.xlabel('Diagnosis')
@@ -407,7 +403,7 @@ if sb=='Analysis & Insights':
                     order by Total_Insurance_Claimed desc"""
             
         df12= pd.read_sql(query12,mydb)
-        
+        #line chart
         plt.figure(figsize =(15,6))
         plt.plot(df12['YearMonth'],df12['Total_Insurance_Claimed'],c='darkviolet',marker='o', markersize=6, linestyle='-', linewidth=2)
         plt.xlabel('YearMonth')
@@ -441,10 +437,8 @@ if sb=='Analysis & Insights':
         df13= pd.read_sql(query13,mydb)
         
         pivot_df = df13.pivot(index='Diagnosis', columns='Season', values='TotalAdmission')
-
+        #Grouped bar chart
         fig, ax = plt.subplots(figsize=(12, 7))
-        
-        # Set the x positions for each Diagnosis group
         x = np.arange(len(pivot_df))
         width = 0.2
         
@@ -485,7 +479,7 @@ if sb=='Analysis & Insights':
             order by Missing_Followups desc;
             """
         df14= pd.read_sql(query14,mydb)
-        
+        #pie chart
         lbls = df14['Doctor']
         sizes = df14['Missing_Followups']
         colors=['mistyrose','bisque','azure','lightblue','plum','pink','honeydew']
@@ -512,12 +506,11 @@ if sb=='Analysis & Insights':
             order by Diagnosis desc"""
         
         df15= pd.read_sql(query15,mydb)
-
+    
+        #Hbar plot
         plt.figure(figsize=(10, 6))
         plt.barh(df15['Diagnosis'], df15['Avg_Bill_Amount'], color='skyblue')
-        
-        # Add labels and title
-        plt.xlabel('Average Billing Amount ($)')
+        plt.xlabel('Average Billing Amount')
         plt.ylabel('Diagnosis')
         plt.grid(axis='x', linestyle='--', alpha=0.7)
         st.pyplot(plt)
