@@ -142,7 +142,9 @@ if sb=='Analysis & Insights':
             st.markdown("""
                     #### Key Observation:
                      - The private ward accounts for half of the total bed occupancy,
-                     indicating a significant preference or demand for private care.
+                       indicating a significant preference or demand for private care.
+                     - The significant use of private beds could indicate higher patient preference or better patient satisfaction in private care.
+                     - If private bed demand continues to grow, consider expanding capacity to meet patient needs and reduce waiting times.
                 """)
             st.write("Here is the data fetched from the database:")
             st.table(df3)
